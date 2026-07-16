@@ -1,0 +1,18 @@
+{
+  "name": "♥️BLOOD-MD PAIR♥️",
+  "description": "SESSION ID GENERATOR FOR WHATSAPP BOTS",
+  "logo": "https://files.catbox.moe/uzi4rn.png",
+  "repository": "https://github.com/BLOOD-MD-PK/BLOOD-MD-MINI",
+  "keywords": ["@BLOOD-MD"],
+  "success_url": "/", 
+  "buildpacks": [
+    { "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" }
+  ],
+  "env": {      
+    "MESSAGE": {
+      "description": "Msg Attached With Session ID",
+      "value": "🔰 BY || BLOOD-MD OFFICIAL 🔰",
+      "required": false 
+    }
+  }
+}
