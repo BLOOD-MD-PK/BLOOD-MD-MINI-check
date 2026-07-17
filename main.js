@@ -242,7 +242,7 @@ async function bloodPair(number, res = null) {
             generateHighQualityLinkPreview: true,
             syncFullHistory: true,
             markOnlineOnConnect: true,
-            browser: Browsers.macOS("Safari"),,
+            browser: Browsers.macOS("Safari"),
             getMessage: async (key) => {
                 const msg = await bloodStore.loadMessage(key.remoteJid, key.id);
                 return msg && msg.message ? msg.message : { conversation: 'BLOOD-MD' };
@@ -284,8 +284,13 @@ async function bloodPair(number, res = null) {
         if (!conn.authState.creds.registered) {
             bloodLog(`🔐 Starting NEW pairing process for ${sanitizedNumber}`, 'info');
             try {
-                await delay(1500);
-                const code = await conn.requestPairingCode(sanitizedNumber);
+                await delay(5000);
+
+await conn.waitForConnectionUpdate(
+    update => update.connection === "connecting" || update.connection === "open"
+);
+
+const code = await conn.requestPairingCode(sanitizedNumber);
                 bloodLog(`Pairing Code for ${sanitizedNumber}: ${code}`, 'success');
                 if (res && !res.headersSent) {
                     res.send({ code, status: 'new_pairing' });
