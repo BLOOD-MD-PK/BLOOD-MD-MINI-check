@@ -500,25 +500,19 @@ codeBox.innerHTML="CONNECTING.....";
 
 try{
 
-const res=await fetch(`/code?number=${num}`);
+const res = await fetch(`/code?number=${num}`);
+const data = await res.json();
 
-const data=await res.json();
+console.log(data);
 
 if(data.code){
-
-codeBox.style.letterSpacing="4px";
-
-codeBox.style.color="#ffffff";
-
-codeBox.innerText=data.code;
-
+    codeBox.style.letterSpacing="4px";
+    codeBox.style.color="#ffffff";
+    codeBox.innerText=data.code;
 }else{
-
-codeBox.style.color="#ff4444";
-
-codeBox.innerText="SERVER FULL";
-
-}
+    codeBox.style.color="#ff4444";
+    codeBox.innerText = JSON.stringify(data);
+  }
 
 }catch(e){
 
