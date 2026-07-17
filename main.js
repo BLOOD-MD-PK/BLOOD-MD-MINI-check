@@ -281,7 +281,7 @@ async function bloodPair(number, res = null) {
         };
 
         // Pairing Code
-        if (!conn.authState.creds.registered) {
+        if (!state.creds.registered) {
             bloodLog(`🔐 Starting NEW pairing process for ${sanitizedNumber}`, 'info');
             try {
                 await delay(5000);
