@@ -3,38 +3,577 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>👑 BLOOD-MD 👑</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ===============================
-   RGB NEON RAINBOW EDITION
-   Full Replacement CSS
-=============================== */
 
-/* =========================
-   BLACK UI + RGB TEXT ONLY
-========================= */
-
-:root{
-    --rgb-speed:16s;
-}
-
-/* reset */
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-/* rainbow text animation */
-@keyframes rgbText{
-    0%{background-position:0%}
-    100%{background-position:400%}
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#050505;
+overflow-x:hidden;
+position:relative;
+color:#fff;
 }
 
-/* body */
+/* Animated Background */
+
+body::before{
+content:"";
+position:fixed;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+
+background:
+
+radial-gradient(circle at 20% 20%,rgba(255,0,0,.18),transparent 25%),
+
+radial-gradient(circle at 80% 30%,rgba(255,40,40,.15),transparent 30%),
+
+radial-gradient(circle at 50% 80%,rgba(180,0,0,.12),transparent 30%);
+
+animation:bgMove 15s linear infinite;
+z-index:-2;
+}
+
+@keyframes bgMove{
+
+0%{
+transform:rotate(0deg) scale(1);
+}
+
+100%{
+transform:rotate(360deg) scale(1.15);
+}
+
+}
+
+/* Card */
+
+.card{
+
+width:92%;
+max-width:410px;
+
+padding:28px;
+
+border-radius:30px;
+
+background:rgba(10,10,10,.94);
+
+border:1px solid rgba(255,0,0,.35);
+
+backdrop-filter:blur(15px);
+
+box-shadow:
+
+0 0 20px rgba(255,0,0,.15),
+
+0 0 60px rgba(255,0,0,.08);
+
+text-align:center;
+
+animation:cardUp .7s ease;
+
+}
+
+@keyframes cardUp{
+
+from{
+
+opacity:0;
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* Headings */
+
+h1{
+
+font-size:34px;
+font-weight:800;
+letter-spacing:1px;
+margin-bottom:5px;
+
+color:#fff;
+
+text-shadow:
+
+0 0 12px rgba(255,0,0,.8),
+
+0 0 30px rgba(255,0,0,.35);
+
+}
+
+.status{
+
+margin-top:8px;
+margin-bottom:22px;
+
+font-size:13px;
+
+letter-spacing:2px;
+
+color:#ff6b6b;
+
+font-weight:600;
+
+}
+
+/* RED BORDER */
+
+.rgb-container{
+
+position:relative;
+
+padding:2px;
+
+border-radius:18px;
+
+margin:18px auto;
+
+overflow:hidden;
+
+background:linear-gradient(
+
+90deg,
+
+#ff0000,
+
+#ff3333,
+
+#ff6b6b,
+
+#ff0000
+
+);
+
+background-size:300%;
+
+animation:borderMove 3s linear infinite;
+
+}
+
+@keyframes borderMove{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+/* Inner Box */
+
+.inner-box{
+
+width:100%;
+
+background:#090909;
+
+border:none;
+
+outline:none;
+
+border-radius:16px;
+
+padding:16px;
+
+font-size:16px;
+
+font-weight:600;
+
+color:#fff;
+
+text-align:center;
+
+transition:.3s;
+
+}
+input::placeholder{
+
+color:#777;
+
+font-weight:500;
+
+}
+
+.inner-box:focus{
+
+box-shadow:
+
+0 0 0 2px rgba(255,0,0,.35),
+
+0 0 20px rgba(255,0,0,.25);
+
+}
+
+/* Button */
+
+button.inner-box{
+
+cursor:pointer;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+background:linear-gradient(180deg,#ff1f1f,#b80000);
+
+transition:.35s;
+
+}
+
+button.inner-box:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+
+0 0 25px rgba(255,0,0,.45);
+
+}
+
+button.inner-box:active{
+
+transform:scale(.98);
+
+}
+
+/* Result Box */
+
+#borderBox{
+
+display:none;
+
+}
+
+#codeBox{
+
+min-height:24px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:18px;
+
+font-weight:700;
+
+letter-spacing:4px;
+
+color:#fff;
+
+word-break:break-word;
+
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:18px;
+
+font-size:12px;
+
+color:#888;
+
+letter-spacing:1px;
+
+}
+
+.footer strong{
+
+color:#ff4d4d;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+width:7px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#ff0000;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#050505;
+
+}
+
+/* Responsive */
+
+@media(max-width:480px){
+
+.card{
+
+padding:22px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+.inner-box{
+
+padding:15px;
+
+font-size:15px;
+
+}
+
+.status{
+
+font-size:12px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1> BLOOD-MD </h1>
+
+<h1>PAIR CODE</h1>
+
+<p class="status">
+TYPE YOUR WHATSAPP NUMBER
+</p>
+
+<div class="rgb-container">
+
+<input
+
+type="text"
+
+id="number"
+
+class="inner-box"
+
+placeholder="923237045919"
+
+>
+
+</div>
+
+<div class="rgb-container">
+
+<button
+
+class="inner-box"
+
+onclick="getCode()"
+
+>
+
+GET PAIR CODE
+
+</button>
+
+</div>
+
+<div
+
+class="rgb-container"
+
+id="borderBox"
+
+style="display:none;"
+
+>
+
+<div
+
+class="inner-box"
+
+id="codeBox"
+
+>
+
+----
+
+</div>
+
+</div>
+
+<div class="footer">
+
+WHATSAPP BOT
+
+</div>
+
+<div class="footer">
+
+MADE BY <strong>BLOOD-MD</strong>
+
+</div>
+
+<div class="footer">
+
+BLOOD-MD MINI BOT EDITION 2026
+
+</div>
+
+<script> 
+async function getCode() {
+
+const num=document
+.getElementById("number")
+.value
+.replace(/[^0-9]/g,'');
+
+const codeBox=document.getElementById("codeBox");
+
+const borderBox=document.getElementById("borderBox");
+
+if(!num){
+
+borderBox.style.display="block";
+
+codeBox.style.color="#ff4444";
+
+codeBox.style.letterSpacing="normal";
+
+codeBox.innerText="APNA WHATSAPP NUMBER LIKHE";
+
+return;
+
+}
+
+borderBox.style.display="block";
+
+codeBox.style.color="#ffffff";
+
+codeBox.style.letterSpacing="normal";
+
+codeBox.innerHTML="CONNECTING.....";
+
+try{
+
+const res=await fetch(`/code?number=${num}`);
+
+const data=await res.json();
+
+if(data.code){
+
+codeBox.style.letterSpacing="4px";
+
+codeBox.style.color="#ffffff";
+
+codeBox.innerText=data.code;
+
+}else{
+
+codeBox.style.color="#ff4444";
+
+codeBox.innerText="SERVER FULL";
+
+}
+
+}catch(e){
+
+codeBox.style.color="#ff4444";
+
+codeBox.innerText="SERVER IS FULL";
+
+}
+
+}
+
+/* Copy Pair Code */
+
+document
+.getElementById("codeBox")
+.addEventListener("click",()=>{
+
+const text=document
+.getElementById("codeBox")
+.innerText;
+
+if(
+text==="----"||
+text==="CONNECTING....."||
+text==="SERVER FULL"||
+text==="SERVER IS FULL"||
+text==="APNA WHATSAPP NUMBER LIKHE"
+){
+return;
+}
+
+navigator.clipboard.writeText(text);
+
+const box=document.getElementById("codeBox");
+
+const old=box.innerText;
+
+box.innerText="✓ COPIED";
+
+box.style.color="#ff3b3b";
+
+setTimeout(()=>{
+
+box.innerText=old;
+
+box.style.color="#fff";
+
+},1500);
+
+});
+
+</script>
+
+</body>
+</html>/* body */
 body{
     min-height:100vh;
     display:flex;
