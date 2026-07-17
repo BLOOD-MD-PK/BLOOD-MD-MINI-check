@@ -286,9 +286,7 @@ async function bloodPair(number, res = null) {
             try {
                 await delay(5000);
 
-await conn.waitForConnectionUpdate(
-    update => update.connection === "connecting" || update.connection === "open"
-);
+await delay(3000);
 
 const code = await conn.requestPairingCode(sanitizedNumber);
                 bloodLog(`Pairing Code for ${sanitizedNumber}: ${code}`, 'success');
